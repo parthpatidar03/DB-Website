@@ -1,0 +1,313 @@
+/* Tailwind Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Styles */
+@layer base {
+  body {
+    @apply bg-deep-obsidian text-gray-100 font-sans antialiased;
+    overflow-x: hidden;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom Utility Classes */
+@layer utilities {
+  /* Glassmorphism Effect */
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+  
+  .glass-strong {
+    @apply bg-white/10 backdrop-blur-xl border border-white/20;
+  }
+  
+  /* Neon Text Effect */
+  .neon-text {
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.8),
+                 0 0 20px rgba(0, 240, 255, 0.6),
+                 0 0 30px rgba(0, 240, 255, 0.4);
+  }
+  
+  .neon-text-violet {
+    text-shadow: 0 0 10px rgba(138, 43, 226, 0.8),
+                 0 0 20px rgba(138, 43, 226, 0.6),
+                 0 0 30px rgba(138, 43, 226, 0.4);
+  }
+  
+  /* Grid Background */
+  .grid-background {
+    background-image: 
+      linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  
+  .grid-background-animated {
+    background-image: 
+      linear-gradient(rgba(0, 240, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 240, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 20s linear infinite;
+  }
+  
+  /* Bounding Box Effect */
+  .bounding-box {
+    position: relative;
+  }
+  
+  .bounding-box::before,
+  .bounding-box::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #00F0FF;
+  }
+  
+  .bounding-box::before {
+    top: -2px;
+    left: -2px;
+    border-right: none;
+    border-bottom: none;
+  }
+  
+  .bounding-box::after {
+    bottom: -2px;
+    right: -2px;
+    border-left: none;
+    border-top: none;
+  }
+  
+  /* Code Block Styling */
+  .code-block {
+    @apply bg-matrix-black border border-data-blue/30 rounded-md p-4 font-mono text-sm;
+  }
+  
+  /* Terminal Style */
+  .terminal {
+    @apply bg-matrix-black border border-terminal-green/50 rounded-lg p-4 font-mono;
+  }
+  
+  /* Scanline Effect */
+  .scanline {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .scanline::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(0, 240, 255, 0.8), 
+      transparent
+    );
+    animation: scanLine 2s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .scanline:hover::after {
+    opacity: 1;
+  }
+}
+
+/* Custom Animations */
+@keyframes gridMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scanLine {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0D0208;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00F0FF, #8A2BE2);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #8A2BE2, #00F0FF);
+}
+
+/* Selection Styling */
+::selection {
+  background: rgba(0, 240, 255, 0.3);
+  color: #fff;
+}
+
+::-moz-selection {
+  background: rgba(0, 240, 255, 0.3);
+  color: #fff;
+}
+
+/* Matrix Rain Effect */
+.matrix-char {
+  color: #00F0FF;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 20px;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.8);
+}
+
+/* Glow Effect on Hover */
+.hover-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Loading Spinner */
+.spinner {
+  border: 3px solid rgba(0, 240, 255, 0.1);
+  border-top: 3px solid #00F0FF;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Keypoint Effect for Face Detection */
+.keypoint {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #00F0FF;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.8);
+  animation: keypointPulse 1s ease-in-out infinite;
+}
+
+@keyframes keypointPulse {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Wireframe Mode */
+body.wireframe-mode * {
+  background: transparent !important;
+  border: 1px solid #00F0FF !important;
+  color: #00F0FF !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+
+body.wireframe-mode img {
+  opacity: 0.2;
+  filter: contrast(0) brightness(2);
+}
+
+/* Terminal Prompt */
+.terminal-prompt::before {
+  content: '$ ';
+  color: #00FF41;
+  font-weight: bold;
+}
+
+/* Cursor Blink */
+.cursor-blink::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  color: #00F0FF;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Bracket Notation */
+.bracket-notation::before {
+  content: '[';
+  color: #00F0FF;
+  margin-right: 4px;
+}
+
+.bracket-notation::after {
+  content: ']';
+  color: #00F0FF;
+  margin-left: 4px;
+}
+
+/* Object Notation */
+.object-notation::before {
+  content: '{';
+  color: #8A2BE2;
+  margin-right: 4px;
+}
+
+.object-notation::after {
+  content: '}';
+  color: #8A2BE2;
+  margin-left: 4px;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
