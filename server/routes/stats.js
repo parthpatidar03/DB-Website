@@ -23,7 +23,7 @@ router.get('/', noCache, (req, res) => {
 
         // 2. Calculate Member Stats
         const memberStats = {
-            total: members.length,
+            total: '40+',
             batches: members.reduce((acc, curr) => {
                 const batch = curr.batch || 'unknown';
                 acc[batch] = (acc[batch] || 0) + 1;
