@@ -44,7 +44,11 @@ const MemberCard = ({ member }) => {
 
               {/* Image */}
               <img
-                src={`/images/members/${member.rollNo}.png`}
+                src={
+                  member.image 
+                    ? member.image.replace("open?id=", "uc?export=view&id=") 
+                    : `/images/members/${member.rollNo}.png`
+                }
                 loading="lazy"
                 onError={(e) => {
                   // Fallback to a clear styling if image is missing
