@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Instagram, Mail, MapPin } from 'lucide-react';
+import { Linkedin, Instagram, MapPin, Book } from 'lucide-react';
 import { CONTACT_INFO, SOCIAL_LINKS, SYSTEM_METRICS } from '../../utils/constants';
 import { fadeInVariants } from '../../utils/animations';
 
@@ -17,10 +17,9 @@ const Footer = () => {
 
   // Icon mapping for social links
   const iconMap = {
-    Github,
     Linkedin,
     Instagram,
-    Mail,
+    Book,
   };
 
   return (
@@ -65,18 +64,7 @@ const Footer = () => {
               {'<Contact />'}
             </h3>
             
-            {/* Email as const variable */}
-            <div className="font-mono text-sm">
-              <span className="text-neural-violet">const</span>
-              <span className="text-gray-400"> CONTACT = </span>
-              <a
-                href={`mailto:${CONTACT_INFO.email}`}
-                className="text-data-blue hover:text-terminal-green transition-colors"
-              >
-                "{CONTACT_INFO.email}"
-              </a>
-              <span className="text-gray-400">;</span>
-            </div>
+
 
             {/* Location as coordinates */}
             <div className="font-mono text-xs space-y-1">
@@ -117,12 +105,7 @@ const Footer = () => {
               >
                 members.json
               </a>
-              <a
-                href="/blogs"
-                className="block text-gray-400 hover:text-data-blue transition-colors terminal-prompt"
-              >
-                blog/research.md
-              </a>
+
             </div>
           </motion.div>
 

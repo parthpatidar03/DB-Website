@@ -166,7 +166,7 @@ const Home = () => {
               {[
                 { label: 'Projects', value: stats.projects.total, color: 'data-blue' },
                 { label: 'Members', value: stats.members.total, color: 'neural-violet' },
-                { label: 'Papers', value: stats.papers.published, color: 'terminal-green' },
+                { label: 'Papers', value: stats.achievements.papers, color: 'terminal-green' },
                 { label: 'Events', value: stats.events.workshops, color: 'yellow-500' },
               ].map((stat, index) => (
                 <motion.div

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "blog_001",
+    "title": "Voice Cloning AI : A Brief History (of Controversies)",
+    "description": "Artificial voices are increasingly populating today's technological and social landscape. The amount of resemblance these synthetic replicates hold with the real ones is genuinely remarkable.",
+    "url": "https://medium.com/@databyte.club/voice-cloning-ai-a-brief-history-of-controversies-be416c61d488",
+    "image": "https://miro.medium.com/v2/resize:fit:720/format:webp/1*dVGwCAIwgE-T6ZUvlS9dsA.jpeg",
+    "date": "2023-10-28",
+    "readTime": "8 min read",
+    "tags": ["AI", "Voice Cloning", "Ethics"]
+  },
+  {
+    "id": "blog_002",
+    "title": "Chandrayaan 3: A New Frontier in Lunar Exploration Driven by AI Innovation",
+    "description": "Embark on a captivating journey as we unravel the intricate tale behind Chandrayaan 3's setbacks and cast a brilliant spotlight on the remarkable distinctions that set it apart.",
+    "url": "https://medium.com/@databyte.club/chandrayaan-3-a-new-frontier-in-lunar-exploration-driven-by-ai-innovation-eae9060c5b8e",
+    "image": "https://miro.medium.com/v2/resize:fit:720/format:webp/1*r4B7g_p55-byBiQ5A00yLg.jpeg",
+    "date": "2023-08-29",
+    "readTime": "7 min read",
+    "tags": ["Space", "AI", "Chandrayaan"]
+  }
+]

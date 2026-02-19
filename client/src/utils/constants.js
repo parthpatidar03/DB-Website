@@ -16,7 +16,7 @@ export const NAV_LINKS = [
     id: '02',
     label: 'Blogs',
     path: '/blogs',
-    notation: 'slash', // /Blogs/
+    notation: 'slash', // //Blogs
   },
 ];
 
@@ -29,13 +29,6 @@ export const PROJECT_CATEGORIES = [
     color: '#00F0FF',
   },
   {
-    id: 'nlp',
-    label: 'Natural Language Processing',
-    query: 'SELECT * FROM projects WHERE category = "NLP"',
-    color: '#00F0FF',
-    icon: '📝',
-  },
-  {
     id: 'cv',
     label: 'Computer Vision',
     query: 'SELECT * FROM projects WHERE category = "CV"',
@@ -43,11 +36,11 @@ export const PROJECT_CATEGORIES = [
     icon: '👁️',
   },
   {
-    id: 'rl',
-    label: 'Reinforcement Learning',
-    query: 'SELECT * FROM projects WHERE category = "RL"',
+    id: 'nlp',
+    label: 'Natural Language Processing',
+    query: 'SELECT * FROM projects WHERE category = "NLP"',
     color: '#00FF41',
-    icon: '🎮',
+    icon: '📝',
   },
   {
     id: 'dl',
@@ -57,6 +50,13 @@ export const PROJECT_CATEGORIES = [
     icon: '🧠',
   },
   {
+    id: 'web',
+    label: 'Web Development',
+    query: 'SELECT * FROM projects WHERE category = "WEB"',
+    color: '#FF6B6B',
+    icon: '🌐',
+  },
+  {
     id: 'ml',
     label: 'Machine Learning',
     query: 'SELECT * FROM projects WHERE category = "ML"',
@@ -64,38 +64,49 @@ export const PROJECT_CATEGORIES = [
     icon: '📊',
   },
   {
-    id: 'web',
-    label: 'Web Development',
-    query: 'SELECT * FROM projects WHERE category = "WEB"',
-    color: '#FF6B6B',
-    icon: '🌐',
+    id: 'rl',
+    label: 'Reinforcement Learning',
+    query: 'SELECT * FROM projects WHERE category = "RL"',
+    color: '#009688',
+    icon: '🎮',
   },
 ];
 
-// Tech Stack Options
-export const TECH_STACKS = [
-  { id: 'pytorch', label: 'PyTorch', color: '#EE4C2C' },
-  { id: 'tensorflow', label: 'TensorFlow', color: '#FF6F00' },
-  { id: 'keras', label: 'Keras', color: '#D00000' },
-  { id: 'sklearn', label: 'Scikit-learn', color: '#F7931E' },
-  { id: 'opencv', label: 'OpenCV', color: '#5C3EE8' },
-  { id: 'huggingface', label: 'HuggingFace', color: '#FFD21E' },
-  { id: 'react', label: 'React', color: '#61DAFB' },
-  { id: 'nodejs', label: 'Node.js', color: '#339933' },
-  { id: 'mongodb', label: 'MongoDB', color: '#47A248' },
-  { id: 'fastapi', label: 'FastAPI', color: '#009688' },
-  { id: 'flask', label: 'Flask', color: '#000000' },
-  { id: 'docker', label: 'Docker', color: '#2496ED' },
+// Tech Stack Options (Visual mapping for tags)
+export const TECH_STACKS = {
+  pytorch: { label: 'PyTorch', color: '#EE4C2C' },
+  tensorflow: { label: 'TensorFlow', color: '#FF6F00' },
+  keras: { label: 'Keras', color: '#D00000' },
+  sklearn: { label: 'Scikit-learn', color: '#F7931E' },
+  opencv: { label: 'OpenCV', color: '#5C3EE8' },
+  huggingface: { label: 'HuggingFace', color: '#FFD21E' },
+  react: { label: 'React', color: '#61DAFB' },
+  nodejs: { label: 'Node.js', color: '#339933' },
+  mongodb: { label: 'MongoDB', color: '#47A248' },
+  fastapi: { label: 'FastAPI', color: '#009688' },
+  flask: { label: 'Flask', color: '#000000' },
+  docker: { label: 'Docker', color: '#2496ED' },
+};
+
+// Member Batches
+export const MEMBER_BATCHES = [
+  { id: '2026', label: 'Head', color: '#FFD700' },
+  { id: '2027', label: 'Manager', color: '#00F0FF' },
+  { id: '2028', label: 'Coordinator', color: '#8A2BE2' },
 ];
 
-// Member Roles
-export const MEMBER_ROLES = [
-  { id: 'president', label: 'President', color: '#FFD700' },
-  { id: 'vice-president', label: 'Vice President', color: '#C0C0C0' },
-  { id: 'secretary', label: 'Secretary', color: '#CD7F32' },
-  { id: 'core', label: 'Core Member', color: '#00F0FF' },
-  { id: 'member', label: 'Member', color: '#8A2BE2' },
-  { id: 'alumni', label: 'Alumni', color: '#6B7280' },
+export const BATCH_ROLES = {
+  '2026': 'Head',
+  '2027': 'Manager',
+  '2028': 'Coordinator',
+};
+
+// Member Domains
+export const MEMBER_DOMAINS = [
+  { id: 'cv', label: 'Computer Vision', color: '#8A2BE2' },
+  { id: 'nlp', label: 'NLP', color: '#00FF41' },
+  { id: 'web', label: 'Web Development', color: '#61DAFB' },
+  { id: 'design', label: 'Design', color: '#FF00FF' },
 ];
 
 // System Metrics (for navbar ticker)
@@ -104,40 +115,46 @@ export const SYSTEM_METRICS = {
   accuracy: 0.982,
   loss: 0.014,
   status: 'STABLE',
-  build: 'v2.0.26',
-  hash: '7d3f2a',
+  build: 'v2.1.0',
 };
 
 // Social Media Links
 export const SOCIAL_LINKS = [
-  {
-    id: 'github',
-    label: 'GitHub',
-    url: 'https://github.com/databyte-nitt',
-    flag: '--github',
-    icon: 'Github',
-  },
+  // {
+  //   id: 'github',
+  //   label: 'GitHub',
+  //   url: 'https://github.com/databyte-nitt',
+  //   flag: '--github',
+  //   icon: 'Github',
+  // },
   {
     id: 'linkedin',
     label: 'LinkedIn',
-    url: 'https://linkedin.com/company/databyte-nitt',
+    url: 'https://www.linkedin.com/company/data-byte/',
     flag: '--linkedin',
     icon: 'Linkedin',
   },
   {
     id: 'instagram',
     label: 'Instagram',
-    url: 'https://instagram.com/databyte.nitt',
+    url: 'https://www.instagram.com/databyte_nitt/',
     flag: '--instagram',
     icon: 'Instagram',
   },
   {
-    id: 'mail',
-    label: 'Email',
-    url: 'mailto:data@nitt.edu',
-    flag: '--mail',
-    icon: 'Mail',
+    id: 'medium',
+    label: 'Medium',
+    url: 'https://medium.com/@databyte.club',
+    flag: '--medium',
+    icon: 'Book',
   },
+  // {
+  //   id: 'mail',
+  //   label: 'Email',
+  //   url: 'mailto:data@nitt.edu',
+  //   flag: '--mail',
+  //   icon: 'Mail',
+  // },
 ];
 
 // Contact Information
@@ -153,15 +170,6 @@ export const CONTACT_INFO = {
   },
 };
 
-// Blog Categories
-export const BLOG_CATEGORIES = [
-  { id: 'all', label: 'All Notebooks', icon: '📚' },
-  { id: 'tutorial', label: 'Tutorials', icon: '📖' },
-  { id: 'research', label: 'Research Papers', icon: '🔬' },
-  { id: 'project', label: 'Project Logs', icon: '📝' },
-  { id: 'event', label: 'Events', icon: '🎉' },
-];
-
 // Keyboard Shortcuts
 export const KEYBOARD_SHORTCUTS = [
   { key: 'Ctrl+K', description: 'Open Command Palette', command: 'openPalette' },
@@ -169,30 +177,6 @@ export const KEYBOARD_SHORTCUTS = [
   { key: 'Ctrl+D', description: 'Toggle Dark Mode', command: 'toggleTheme' },
   { key: 'Esc', description: 'Close Modal', command: 'closeModal' },
 ];
-
-// Animation Configuration
-export const ANIMATION_CONFIG = {
-  stagger: {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.5 },
-  },
-  fadeIn: {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    transition: { duration: 0.6 },
-  },
-  slideUp: {
-    initial: { opacity: 0, y: 50 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.7 },
-  },
-  scale: {
-    initial: { scale: 0.8, opacity: 0 },
-    animate: { scale: 1, opacity: 1 },
-    transition: { duration: 0.5 },
-  },
-};
 
 // Club Ticker Messages (for scrolling ticker)
 export const TICKER_MESSAGES = [
@@ -211,9 +195,8 @@ export const FILE_SYSTEM = {
   root: {
     'home.py': '/',
     'projects/': '/projects',
-    'members.json': '/members',
-    'blog/': {
-      'research.md': '/blogs',
+    'members/': {
+      'roster.json': '/members'
     },
   },
 };

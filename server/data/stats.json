@@ -1,0 +1,29 @@
+{
+  "projects": {
+    "total": 9,
+    "categories": {
+      "cv": 4,
+      "nlp": 3,
+      "dl": 1,
+      "web": 1
+    }
+  },
+  "members": {
+    "total": 3,
+    "batches": {
+      "2026": 1,
+      "2027": 1,
+      "2028": 1
+    }
+  },
+  "events": {
+    "workshops": 12,
+    "hackathons": 4,
+    "talks": 8
+  },
+  "achievements": {
+    "papers": 3,
+    "competitions": 5,
+    "projects_deployed": 9
+  }
+}

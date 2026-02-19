@@ -1,32 +1,32 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useDataFetch } from '../hooks/useDataFetch';
-import { BLOG_CATEGORIES } from '../utils/constants';
-import { Calendar, Clock, Heart, Eye } from 'lucide-react';
+import BlogCard from '../components/blogs/BlogCard';
 import { containerVariants, itemVariants } from '../utils/animations';
+import LoadingSkeleton from '../components/common/LoadingSkeleton';
 
 /**
- * Blogs Page - "The Notebooks"
+ * Blogs Page - "The Knowledge Graph"
  * Features:
- * - Markdown editor style layout
- * - Category filtering
- * - Blog cards with stats
+ * - List of articles/blogs
+ * - Sort by Date
+ * - Pagination
  */
 const Blogs = () => {
-  const { data: blogs, loading } = useDataFetch('/api/blogs');
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [sortBy, setSort] = useState('newest');
+  const [page, setPage] = useState(1);
+  const LIMIT = 6;
 
-  const filteredBlogs = blogs
-    ? blogs.filter(b => selectedCategory === 'all' || b.category === selectedCategory)
-    : [];
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="spinner" />
-      </div>
-    );
-  }
+  // Fetch data
+  const { data: blogs, loading, pagination } = useDataFetch(
+    '/api/blogs',
+    {
+      page,
+      limit: LIMIT,
+      sort: sortBy
+    },
+    [page, sortBy]
+  );
 
   return (
     <div className="min-h-screen py-20 px-4">
@@ -38,112 +38,93 @@ const Blogs = () => {
           className="mb-12"
         >
           <h1 className="text-5xl font-mono font-bold mb-4">
-            <span className="text-data-blue">/</span>
-            The Notebooks
-            <span className="text-data-blue">/</span>
+            <span className="text-data-blue">{'{'}</span>
+            The Knowledge Graph
+            <span className="text-data-blue">{'}'}</span>
           </h1>
           <p className="text-gray-400 font-mono text-sm">
-            # Research logs, tutorials, and project documentation
+            SELECT * FROM thoughts WHERE type = 'insight'
           </p>
         </motion.div>
 
-        {/* Category Filter */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="mb-8 flex flex-wrap gap-3"
-        >
-          {BLOG_CATEGORIES.map(cat => (
-            <button
-              key={cat.id}
-              onClick={() => setSelectedCategory(cat.id)}
-              className={`px-4 py-2 rounded-lg font-mono text-sm transition-all ${
-                selectedCategory === cat.id
-                  ? 'bg-data-blue/20 text-data-blue border-2 border-data-blue'
-                  : 'bg-gray-800 text-gray-400 hover:text-data-blue'
-              }`}
-            >
-              {cat.icon} {cat.label}
-            </button>
-          ))}
-        </motion.div>
-
-        {/* Blog Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
-        >
-          {filteredBlogs.map((blog, index) => (
-            <motion.div
-              key={blog.id}
-              variants={itemVariants}
-              whileHover={{ scale: 1.02 }}
-              className="glass rounded-lg overflow-hidden border border-data-blue/20 hover:border-data-blue/50 transition-all group"
-            >
-              {/* Blog Image */}
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={blog.image}
-                  alt={blog.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-matrix-black via-transparent to-transparent" />
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Sidebar - Sort Only for now */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="lg:w-64 space-y-6"
+          >
+            <div className="glass p-4 rounded-lg">
+              <h3 className="font-mono text-sm text-data-blue mb-4">SORT BY DATE</h3>
+              <div className="space-y-2">
+                {['newest', 'oldest'].map((sort) => (
+                  <button
+                    key={sort}
+                    onClick={() => setSort(sort)}
+                    className={`w-full text-left px-3 py-2 rounded font-mono text-sm transition-all ${
+                      sortBy === sort
+                        ? 'bg-neural-violet/20 text-neural-violet border border-neural-violet/50'
+                        : 'text-gray-400 hover:text-neural-violet hover:bg-gray-800'
+                    }`}
+                  >
+                    {sort.charAt(0).toUpperCase() + sort.slice(1)}
+                  </button>
+                ))}
               </div>
+            </div>
+          </motion.div>
 
-              {/* Blog Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-mono font-semibold text-data-blue mb-3 group-hover:text-neural-violet transition-colors">
-                  {blog.title}
-                </h3>
-                <p className="text-gray-400 text-sm mb-4">{blog.excerpt}</p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {blog.tags.map((tag, i) => (
-                    <span
-                      key={i}
-                      className="px-2 py-1 bg-neural-violet/10 border border-neural-violet/30 rounded text-xs font-mono text-neural-violet"
-                    >
-                      #{tag}
-                    </span>
+          {/* Blogs Grid */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="flex-1"
+          >
+            {loading ? (
+              <LoadingSkeleton count={3} />
+            ) : (
+              <>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 min-h-[400px]">
+                  {blogs && blogs.map((blog) => (
+                    <motion.div key={blog.id} variants={itemVariants}>
+                      <BlogCard blog={blog} />
+                    </motion.div>
                   ))}
                 </div>
 
-                {/* Meta */}
-                <div className="flex items-center justify-between text-xs font-mono text-gray-500 pt-4 border-t border-gray-800">
-                  <div className="flex items-center space-x-4">
-                    <div className="flex items-center space-x-1">
-                      <Calendar size={14} />
-                      <span>{new Date(blog.date).toLocaleDateString()}</span>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <Clock size={14} />
-                      <span>{blog.readTime}</span>
-                    </div>
+                {(!blogs || blogs.length === 0) && (
+                  <div className="text-center py-20">
+                    <p className="font-mono text-gray-500">No blogs found.</p>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="flex items-center space-x-1">
-                      <Heart size={14} className="text-neural-violet" />
-                      <span>{blog.likes}</span>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <Eye size={14} />
-                      <span>{blog.views}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+                )}
+              </>
+            )}
 
-        {filteredBlogs.length === 0 && (
-          <div className="text-center py-20">
-            <p className="font-mono text-gray-500">No blogs found in this category</p>
-          </div>
-        )}
+            {/* Pagination Controls */}
+            {pagination && pagination.totalPages > 1 && (
+              <div className="flex justify-center items-center space-x-4 mt-12 font-mono">
+                <button
+                  onClick={() => setPage(p => Math.max(1, p - 1))}
+                  disabled={page === 1 || loading}
+                  className="px-4 py-2 rounded border border-gray-700 hover:border-data-blue disabled:opacity-50 disabled:hover:border-gray-700 transition-colors"
+                >
+                  &lt; PREV
+                </button>
+                <span className="text-data-blue">
+                  Page {page} of {pagination.totalPages}
+                </span>
+                <button
+                  onClick={() => setPage(p => Math.min(pagination.totalPages, p + 1))}
+                  disabled={page === pagination.totalPages || loading}
+                  className="px-4 py-2 rounded border border-gray-700 hover:border-data-blue disabled:opacity-50 disabled:hover:border-gray-700 transition-colors"
+                >
+                  NEXT &gt;
+                </button>
+              </div>
+            )}
+          </motion.div>
+        </div>
       </div>
     </div>
   );

@@ -1,16 +1,27 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import { lazy, Suspense } from 'react';
 
 // Layout Components
 import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
 import Terminal from './components/common/Terminal';
 
-// Pages
-import Home from './pages/Home';
-import Projects from './pages/Projects';
-import Members from './pages/Members';
-import Blogs from './pages/Blogs';
+// Lazy Loaded Pages (Code Splitting)
+const Home = lazy(() => import('./pages/Home'));
+const Projects = lazy(() => import('./pages/Projects'));
+const Members = lazy(() => import('./pages/Members'));
+const Blogs = lazy(() => import('./pages/Blogs'));
+
+// Loading Fallback
+const PageLoader = () => (
+  <div className="min-h-screen flex items-center justify-center bg-deep-obsidian">
+    <div className="flex flex-col items-center space-y-4">
+      <div className="w-12 h-12 border-2 border-data-blue border-t-transparent rounded-full animate-spin" />
+      <div className="font-mono text-data-blue text-sm animate-pulse">Loading modules...</div>
+    </div>
+  </div>
+);
 
 /**
  * Main App Component
@@ -25,7 +36,6 @@ import Blogs from './pages/Blogs';
  * / - Home (Input Layer)
  * /projects - Projects (Model Zoo)
  * /members - Members (Neural Network)
- * /blogs - Blogs (Notebooks)
  */
 function App() {
   return (
@@ -42,12 +52,14 @@ function App() {
           {/* Main Content */}
           <main className="pt-16">
             <AnimatePresence mode="wait">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/projects" element={<Projects />} />
-                <Route path="/members" element={<Members />} />
-                <Route path="/blogs" element={<Blogs />} />
-              </Routes>
+              <Suspense fallback={<PageLoader />}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/projects" element={<Projects />} />
+                  <Route path="/members" element={<Members />} />
+                  <Route path="/blogs" element={<Blogs />} />
+                </Routes>
+              </Suspense>
             </AnimatePresence>
           </main>
 

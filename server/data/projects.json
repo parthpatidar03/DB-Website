@@ -1,0 +1,105 @@
+[
+  {
+    "id": "proj_001",
+    "name": "AI Gym Assistant",
+    "description": "A computer vision-powered personal trainer that analyzes exercise form in real-time, counts reps, and provides corrective feedback to improve workout technique.",
+    "category": "cv",
+    "techStack": ["OpenCV", "MediaPipe", "Python", "Flask"],
+    "status": "completed",
+    "image": "/images/projects/ai-gym-assistant.png",
+    "github": "",
+    "demo": "",
+    "team": ["114124072", "106123015"]
+  },
+  {
+    "id": "proj_002",
+    "name": "Image Chat App",
+    "description": "An intelligent chat application that lets users upload images and ask questions about them. Combines vision models with language models for natural visual Q&A.",
+    "category": "cv",
+    "techStack": ["Vision Transformers", "LLM", "React", "FastAPI"],
+    "status": "completed",
+    "image": "/images/projects/image-chat-app.png",
+    "github": "",
+    "demo": "",
+    "team": ["114124072", "106124032"]
+  },
+  {
+    "id": "proj_003",
+    "name": "Automated Number Plate Reading",
+    "description": "A real-time vehicle number plate detection and recognition system using deep learning, capable of extracting plate text from video feeds and static images.",
+    "category": "cv",
+    "techStack": ["YOLO", "OpenCV", "Tesseract OCR", "Python"],
+    "status": "completed",
+    "image": "/images/projects/anpr.png",
+    "github": "",
+    "demo": "",
+    "team": ["114124072"]
+  },
+  {
+    "id": "proj_004",
+    "name": "College Website Chatbot",
+    "description": "An NLP-powered chatbot for NIT Trichy that answers student queries about admissions, courses, faculty, and campus facilities using retrieval-augmented generation.",
+    "category": "nlp",
+    "techStack": ["RAG", "LangChain", "React", "FastAPI"],
+    "status": "completed",
+    "image": "/images/projects/college-chatbot.png",
+    "github": "",
+    "demo": "",
+    "team": ["106123015", "114124072"]
+  },
+  {
+    "id": "proj_005",
+    "name": "Emotion-Adaptive Background Generation",
+    "description": "Leverages Vision Transformers (ViTs) to detect human emotions in real time from webcam input and dynamically adapts the background accordingly.",
+    "category": "dl",
+    "techStack": ["Vision Transformers", "OpenCV", "Python", "WebSockets"],
+    "status": "completed",
+    "image": "/images/projects/emotion-bg.png",
+    "github": "",
+    "demo": ""
+  },
+  {
+    "id": "proj_006",
+    "name": "Analytics Chatbot for Excel-Based Insights",
+    "description": "Combines a RAG pipeline for descriptive insights from Excel files with a SQL engine for precise numerical data. Converts natural language queries into automated insights, running entirely offline.",
+    "category": "nlp",
+    "techStack": ["RAG", "SQL", "LangChain", "Streamlit"],
+    "status": "completed",
+    "image": "/images/projects/analytics-chatbot.png",
+    "github": "",
+    "demo": ""
+  },
+  {
+    "id": "proj_007",
+    "name": "Jarvis Jr",
+    "description": "Reinvents the command-line experience by integrating NLP. Users type natural language instead of memorizing complex terminal commands and syntax.",
+    "category": "nlp",
+    "techStack": ["NLP", "Python", "Shell", "LLM"],
+    "status": "completed",
+    "image": "/images/projects/jarvis-jr.png",
+    "github": "",
+    "demo": ""
+  },
+  {
+    "id": "proj_008",
+    "name": "Celebrity Look-Alike Model",
+    "description": "Identifies the closest celebrity match by analyzing facial features. Uses face detection, alignment, and embedding-based similarity matching against a curated celebrity database.",
+    "category": "cv",
+    "techStack": ["Face Recognition", "OpenCV", "PyTorch", "Flask"],
+    "status": "completed",
+    "image": "/images/projects/celebrity-lookalike.png",
+    "github": "",
+    "demo": ""
+  },
+  {
+    "id": "proj_009",
+    "name": "DataByte Website",
+    "description": "The official website for DataByte ML Club, NIT Trichy. Built with React, featuring a scientific dashboard aesthetic with live metrics, animations, and project showcase.",
+    "category": "web",
+    "techStack": ["React", "Vite", "Tailwind CSS", "Node.js", "Express"],
+    "status": "in-progress",
+    "image": "/images/projects/databyte-website.png",
+    "github": "https://github.com/vedx07/db",
+    "demo": ""
+  }
+]

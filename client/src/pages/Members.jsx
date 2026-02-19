@@ -2,104 +2,170 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useDataFetch } from '../hooks/useDataFetch';
 import MemberCard from '../components/members/MemberCard';
-import { MEMBER_ROLES } from '../utils/constants';
+import { MEMBER_BATCHES, MEMBER_DOMAINS } from '../utils/constants';
 import { containerVariants, itemVariants } from '../utils/animations';
+import LoadingSkeleton from '../components/common/LoadingSkeleton';
 
 /**
  * Members Page - "The Neural Network"
  * Features:
- * - Member cards with CV detection frames
- * - Role-based filtering
- * - Grid/List view toggle
+ * - Server-side filtering by Batch & Domain
+ * - Member cards with rollNo-based image loading
+ * - Pagination
  */
 const Members = () => {
-  const { data: members, loading } = useDataFetch('/api/members');
-  const [selectedRole, setSelectedRole] = useState('all');
+    const [selectedBatch, setSelectedBatch] = useState('all');
+    const [selectedDomain, setSelectedDomain] = useState('all');
+    const [page, setPage] = useState(1);
+    const LIMIT = 12;
 
-  const filteredMembers = members
-    ? members.filter(m => selectedRole === 'all' || m.role === selectedRole)
-    : [];
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="spinner" />
-      </div>
+    const { data: members, loading, pagination } = useDataFetch(
+        '/api/members',
+        {
+            page,
+            limit: LIMIT,
+            filters: {
+                batch: selectedBatch,
+                domain: selectedDomain
+            }
+        },
+        [page, selectedBatch, selectedDomain]
     );
-  }
 
-  return (
-    <div className="min-h-screen py-20 px-4">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-12"
-        >
-          <h1 className="text-5xl font-mono font-bold mb-4">
-            <span className="text-data-blue">{'{'}</span>
-            The Neural Network
-            <span className="text-data-blue">{'}'}</span>
-          </h1>
-          <p className="text-gray-400 font-mono text-sm">
-            // The neurons that power our intelligence
-          </p>
-        </motion.div>
+    const handleFilterChange = (setter, value) => {
+        setter(value);
+        setPage(1); // Reset to first page on filter change
+    };
 
-        {/* Role Filter */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="mb-8 flex flex-wrap gap-3"
-        >
-          <button
-            onClick={() => setSelectedRole('all')}
-            className={`px-4 py-2 rounded-lg font-mono text-sm transition-all ${
-              selectedRole === 'all'
-                ? 'bg-data-blue/20 text-data-blue border-2 border-data-blue'
-                : 'bg-gray-800 text-gray-400 hover:text-data-blue'
-            }`}
-          >
-            All Members
-          </button>
-          {MEMBER_ROLES.map(role => (
-            <button
-              key={role.id}
-              onClick={() => setSelectedRole(role.id)}
-              className={`px-4 py-2 rounded-lg font-mono text-sm transition-all ${
-                selectedRole === role.id
-                  ? `bg-${role.color}/20 text-${role.color} border-2 border-${role.color}`
-                  : 'bg-gray-800 text-gray-400 hover:text-data-blue'
-              }`}
-            >
-              {role.label}
-            </button>
-          ))}
-        </motion.div>
+    return (
+        <div className="min-h-screen py-20 px-4">
+            <div className="max-w-7xl mx-auto">
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mb-12 text-center"
+                >
+                    <h1 className="text-5xl font-mono font-bold mb-4">
+                        <span className="text-neural-violet">{'{'}</span>
+                        The Neural Network
+                        <span className="text-neural-violet">{'}'}</span>
+                    </h1>
+                    <p className="text-gray-400 font-mono text-sm max-w-2xl mx-auto">
+                        Meet the nodes processing data and building the future.
+                    </p>
+                </motion.div>
 
-        {/* Members Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {filteredMembers.map((member, index) => (
-            <motion.div key={member.id} variants={itemVariants}>
-              <MemberCard member={member} />
-            </motion.div>
-          ))}
-        </motion.div>
+                {/* Filters */}
+                <div className="flex flex-col md:flex-row justify-center gap-4 mb-12">
+                    {/* Batch Filter */}
+                    <div className="glass p-2 rounded-lg inline-flex flex-wrap justify-center gap-2">
+                        <button
+                            onClick={() => handleFilterChange(setSelectedBatch, 'all')}
+                            className={`px-4 py-2 rounded font-mono text-sm transition-all ${
+                                selectedBatch === 'all'
+                                    ? 'bg-data-blue/20 text-data-blue border border-data-blue/50'
+                                    : 'text-gray-400 hover:text-data-blue hover:bg-gray-800'
+                            }`}
+                        >
+                            All Batches
+                        </button>
+                        {MEMBER_BATCHES.map(batch => (
+                            <button
+                                key={batch.id}
+                                onClick={() => handleFilterChange(setSelectedBatch, batch.id)}
+                                className={`px-4 py-2 rounded font-mono text-sm transition-all ${
+                                    selectedBatch === batch.id
+                                        ? 'bg-data-blue/20 text-data-blue border border-data-blue/50'
+                                        : 'text-gray-400 hover:text-data-blue hover:bg-gray-800'
+                                }`}
+                            >
+                                {batch.label}
+                            </button>
+                        ))}
+                    </div>
 
-        {filteredMembers.length === 0 && (
-          <div className="text-center py-20">
-            <p className="font-mono text-gray-500">No members found with this role</p>
-          </div>
-        )}
-      </div>
-    </div>
-  );
+                    {/* Domain Filter */}
+                    <div className="glass p-2 rounded-lg inline-flex flex-wrap justify-center gap-2">
+                        <button
+                            onClick={() => handleFilterChange(setSelectedDomain, 'all')}
+                            className={`px-4 py-2 rounded font-mono text-sm transition-all ${
+                                selectedDomain === 'all'
+                                    ? 'bg-neural-violet/20 text-neural-violet border border-neural-violet/50'
+                                    : 'text-gray-400 hover:text-neural-violet hover:bg-gray-800'
+                            }`}
+                        >
+                            All Domains
+                        </button>
+                        {MEMBER_DOMAINS.map(domain => (
+                            <button
+                                key={domain.id}
+                                onClick={() => handleFilterChange(setSelectedDomain, domain.id)}
+                                className={`px-4 py-2 rounded font-mono text-sm transition-all ${
+                                    selectedDomain === domain.id
+                                        ? 'bg-neural-violet/20 text-neural-violet border border-neural-violet/50'
+                                        : 'text-gray-400 hover:text-neural-violet hover:bg-gray-800'
+                                }`}
+                            >
+                                {domain.label}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Members Grid */}
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                >
+                    {loading ? (
+                         <LoadingSkeleton count={12} />
+                    ) : (
+                        <>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 min-h-[400px]">
+                            {members && members.map((member) => (
+                                <motion.div key={member.id} variants={itemVariants}>
+                                    <MemberCard member={member} />
+                                </motion.div>
+                            ))}
+                        </div>
+
+                        {(!members || members.length === 0) && (
+                            <div className="text-center py-20">
+                                <p className="font-mono text-gray-500">
+                                    No members found matching these filters.
+                                </p>
+                            </div>
+                        )}
+                        </>
+                    )}
+
+                    {/* Pagination Controls */}
+                    {pagination && pagination.totalPages > 1 && (
+                        <div className="flex justify-center items-center space-x-4 mt-16 font-mono">
+                            <button
+                                onClick={() => setPage(p => Math.max(1, p - 1))}
+                                disabled={page === 1 || loading}
+                                className="px-4 py-2 rounded border border-gray-700 hover:border-neural-violet disabled:opacity-50 disabled:hover:border-gray-700 transition-colors"
+                            >
+                                &lt; PREV
+                            </button>
+                            <span className="text-neural-violet">
+                                Page {page} of {pagination.totalPages}
+                            </span>
+                            <button
+                                onClick={() => setPage(p => Math.min(pagination.totalPages, p + 1))}
+                                disabled={page === pagination.totalPages || loading}
+                                className="px-4 py-2 rounded border border-gray-700 hover:border-neural-violet disabled:opacity-50 disabled:hover:border-gray-700 transition-colors"
+                            >
+                                NEXT &gt;
+                            </button>
+                        </div>
+                    )}
+                </motion.div>
+            </div>
+        </div>
+    );
 };
 
 export default Members;

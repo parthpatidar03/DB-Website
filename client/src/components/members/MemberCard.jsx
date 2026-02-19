@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Github, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
+import { BATCH_ROLES } from "../../utils/constants";
 
 const MemberCard = ({ member }) => {
   const [flipped, setFlipped] = useState(false);
@@ -18,7 +19,7 @@ const MemberCard = ({ member }) => {
 
       <div
         className="group w-full max-w-sm mx-auto 
-                   h-[420px] sm:h-[450px] 
+                   h-[360px] sm:h-[400px] 
                    cursor-pointer px-2"
         style={{ perspective: "1200px" }}
         onClick={() => setFlipped(!flipped)}
@@ -43,13 +44,25 @@ const MemberCard = ({ member }) => {
 
               {/* Image */}
               <img
-                // src={member.image}
-                src = {"https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
+                src={`/images/members/${member.rollNo}.png`}
+                loading="lazy"
+                onError={(e) => {
+                  // Fallback to a clear styling if image is missing
+                  e.target.style.display = 'none';
+                  // Remove 'hidden' class or set display to flex to keep centering
+                  e.target.nextSibling.classList.remove('hidden');
+                  e.target.nextSibling.style.display = 'flex'; 
+                }}
                 alt={member.name}
-                className="w-full h-full object-cover 
-                           transition-transform duration-700 
-                           group-hover:scale-105"
+                className="w-full h-full object-contain bg-black"
               />
+              
+              {/* Fallback Initials (Hidden by default, shown on error) */}
+              <div className="absolute inset-0 hidden bg-neutral-900 flex items-center justify-center">
+                 <span className="text-6xl font-mono text-green-500/50 font-bold">
+                    {member.name.charAt(0)}
+                 </span>
+              </div>
 
               <div className="absolute inset-0 bg-black/30" />
 
@@ -80,12 +93,12 @@ const MemberCard = ({ member }) => {
                 {member.name}
               </h3>
 
-              <p className="text-xs sm:text-sm text-green-200 mt-1">
-                {member.domain || "WEB DEVELOPER"}
+              <p className="text-xs sm:text-sm text-green-200 mt-1 uppercase tracking-wider">
+                {member.domain || "MEMBER"}
               </p>
 
-              <p className="text-[10px] sm:text-xs text-green-300 uppercase tracking-wider mt-1">
-                {member.position || "MEMBER"}
+              <p className="text-[10px] sm:text-xs text-green-300 uppercase tracking-wider mt-1 opacity-80">
+                {member.batch}: {BATCH_ROLES[member.batch]}
               </p>
 
               <div className="flex justify-center gap-5 sm:gap-6 mt-3 sm:mt-4">
@@ -132,32 +145,22 @@ const MemberCard = ({ member }) => {
               <p className="text-[10px] sm:text-xs uppercase tracking-widest text-green-400 mb-2">
                 ML CLUB PROFILE
               </p>
-
-              <h3 className="text-xl sm:text-2xl font-bold text-white">
-                {member.name}
+              
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">
+                  {member.name}
               </h3>
-
-              <p className="text-xs sm:text-sm text-gray-400 mt-3 leading-relaxed">
-                {member.bio}
-              </p>
             </div>
 
             <div className="border-t border-green-500/20 my-4 sm:my-5" />
-
             <div className="grid grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm">
               <div>
-                <p className="text-gray-500 text-[10px] sm:text-xs">Branch</p>
-                <p className="text-white font-medium">{member.branch}</p>
+                <p className="text-gray-500 text-[10px] sm:text-xs">Domain</p>
+                <p className="text-white font-medium">{member.domain || "Member"}</p>
               </div>
 
               <div>
-                <p className="text-gray-500 text-[10px] sm:text-xs">Year</p>
-                <p className="text-white font-medium">{member.year}</p>
-              </div>
-
-              <div className="col-span-2">
-                <p className="text-gray-500 text-[10px] sm:text-xs">Roll Number</p>
-                <p className="text-white font-medium">{member.rollNo}</p>
+                <p className="text-gray-500 text-[10px] sm:text-xs">Batch</p>
+                <p className="text-white font-medium">{member.batch}</p>
               </div>
             </div>
 

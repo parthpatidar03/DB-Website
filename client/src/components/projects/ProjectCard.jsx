@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Calendar, Users, Star } from 'lucide-react';
+import { Github, ExternalLink } from 'lucide-react';
 import { cardHoverVariants } from '../../utils/animations';
 
 /**
@@ -55,30 +55,16 @@ const ProjectCard = ({ project }) => {
       whileHover="hover"
       className="group relative bg-gradient-to-br from-matrix-black to-gray-900 rounded-lg overflow-hidden border border-data-blue/20 hover:border-data-blue/50 transition-all duration-300 h-full flex flex-col"
     >
-      {/* Project Image/Preview */}
-      <div className="relative h-48 overflow-hidden">
-        <img
-          src={project.image}
-          alt={project.name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-matrix-black via-transparent to-transparent" />
-        
-        {/* Status Badge */}
-        <div className={`absolute top-4 right-4 px-3 py-1 bg-${getStatusColor(project.status)}/20 border border-${getStatusColor(project.status)} rounded-full`}>
-          <span className={`text-xs font-mono text-${getStatusColor(project.status)} uppercase`}>
-            {project.status}
-          </span>
-        </div>
-      </div>
-
       {/* Project Content */}
       <div className="flex-1 flex flex-col p-6">
-        {/* Project Name - Tag Format */}
-        <div className="mb-3">
+        {/* Project Name & Status */}
+        <div className="flex justify-between items-start mb-3">
           <h3 className="text-xl font-mono font-semibold text-data-blue group-hover:text-neural-violet transition-colors">
             {'<'}{project.name}{' />'}
           </h3>
+          <span className={`px-2 py-1 text-[10px] font-mono uppercase bg-${getStatusColor(project.status)}/10 border border-${getStatusColor(project.status)}/30 rounded-full text-${getStatusColor(project.status)}`}>
+            {project.status}
+          </span>
         </div>
 
         {/* Description */}
@@ -90,9 +76,9 @@ const ProjectCard = ({ project }) => {
         <div className="bg-matrix-black/50 border border-terminal-green/30 rounded p-3 mb-4 font-mono text-xs">
           <div className="text-terminal-green mb-1">$ tail -n 1 project_log.txt</div>
           <div className="text-gray-500">
-            Epoch {project.metrics.epoch}/{project.metrics.epoch}: 
-            <span className="text-neural-violet"> loss: {project.metrics.loss.toFixed(3)}</span> - 
-            <span className="text-data-blue"> acc: {project.metrics.accuracy.toFixed(3)}</span>
+            Epoch {(project.metrics?.epoch || 100)}/{(project.metrics?.epoch || 100)}: 
+            <span className="text-neural-violet"> loss: {(project.metrics?.loss || 0.042).toFixed(3)}</span> - 
+            <span className="text-data-blue"> acc: {(project.metrics?.accuracy || 0.985).toFixed(3)}</span>
             <span className="text-terminal-green"> - [{project.status.toUpperCase()}]</span>
           </div>
         </div>
@@ -109,23 +95,7 @@ const ProjectCard = ({ project }) => {
           ))}
         </div>
 
-        {/* Metrics Footer */}
-        <div className="flex items-center justify-between pt-4 border-t border-gray-800 text-xs font-mono text-gray-500">
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-1">
-              <Star size={14} className="text-yellow-500" />
-              <span>{project.stars}</span>
-            </div>
-            <div className="flex items-center space-x-1">
-              <Users size={14} />
-              <span>{project.contributors}</span>
-            </div>
-            <div className="flex items-center space-x-1">
-              <Calendar size={14} />
-              <span>{new Date(project.lastUpdated).toLocaleDateString()}</span>
-            </div>
-          </div>
-        </div>
+
 
         {/* Action Links */}
         <div className="flex items-center space-x-3 mt-4">
