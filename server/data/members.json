@@ -8,7 +8,7 @@
     "batch": "2028",
     "domain": "Web Dev",
     "bio": "Created UI/Frontend for excel analytics chatbot and Jarvis jr chatbot",
-    "image": "https://drive.google.com/open?id=1h62YnRaTOTeJgBhWJAUTikNTOv2mmqbe"
+    "image": "/members/mem_001.jpg"
   },
   {
     "id": "mem_002",
@@ -19,7 +19,7 @@
     "batch": "2027",
     "domain": "NLP",
     "bio": "College website chatbot, and LingoQuest project",
-    "image": "https://drive.google.com/open?id=1JZiy7IrADQp4rJNF3A5v2yjck0A4LH_j"
+    "image": "/members/mem_002.jpg"
   },
   {
     "id": "mem_003",
@@ -29,7 +29,8 @@
     "github": "",
     "batch": "2028",
     "domain": "Web Dev",
-    "bio": "Working on building Club Website"
+    "bio": "Working on building Club Website",
+    "image": "/members/mem_003.jpg"
   },
   {
     "id": "mem_004",
@@ -40,7 +41,7 @@
     "batch": "2027",
     "domain": "NLP",
     "bio": "SIH participant as a team from DataByte, Image Conversational Chatbot (project)",
-    "image": "https://drive.google.com/open?id=1LxvkC7hznOHH7tb_hvebFertaqVrjDXp"
+    "image": "/members/mem_004.jpg"
   },
   {
     "id": "mem_005",
@@ -51,7 +52,7 @@
     "batch": "2028",
     "domain": "Web Dev",
     "bio": "NO",
-    "image": "https://drive.google.com/open?id=1FzxlVsqeB5xI6jbJ3k23plvyfiMUZZBU"
+    "image": "/members/mem_005.jpg"
   },
   {
     "id": "mem_006",
@@ -62,7 +63,7 @@
     "batch": "2028",
     "domain": "NLP",
     "bio": "I am participating in Pragyan '26 Expo with the LingoQuest team of DataByte",
-    "image": "https://drive.google.com/open?id=16Fi3Z1jSGyegpQdXdHvAtNAWikCm4c20"
+    "image": "/members/mem_006.jpg"
   },
   {
     "id": "mem_007",
@@ -73,7 +74,7 @@
     "batch": "2028",
     "domain": "CV",
     "bio": "Number Plate Reading Project",
-    "image": "https://drive.google.com/open?id=1dnIKsqr4BHc6lTLl-C-Rsu4KMlb8z8hs"
+    "image": "/members/mem_007.jpg"
   },
   {
     "id": "mem_008",
@@ -84,7 +85,7 @@
     "batch": "2028",
     "domain": "Design",
     "bio": ".",
-    "image": "https://drive.google.com/open?id=1iTjRAdZw_DT9ardZqNUT231ESU5Rpy1T"
+    "image": "/members/mem_008.jpg"
   },
   {
     "id": "mem_009",
@@ -95,7 +96,7 @@
     "batch": "2028",
     "domain": "NLP",
     "bio": "I'm a Lateral Inductee, yet to contribute",
-    "image": "https://drive.google.com/open?id=146YmPT9eJ0UKMQrfXpp80jZhT0l-0HV7"
+    "image": "/members/mem_009.jpg"
   },
   {
     "id": "mem_010",
@@ -106,7 +107,7 @@
     "batch": "2028",
     "domain": "Web Dev",
     "bio": "nothing for now",
-    "image": "https://drive.google.com/open?id=1q49h9OqwdfgpirFKZnT4Mqowg8IBkxeo"
+    "image": "/members/mem_010.jpg"
   },
   {
     "id": "mem_011",
@@ -117,7 +118,7 @@
     "batch": "2027",
     "domain": "NLP",
     "bio": "Contributed ideas during discussions to improve language coverage, user experience, and scalability of the system. Participated in debugging, optimization, and performance analysis of NLP modules.",
-    "image": "https://drive.google.com/open?id=1ToFZXoDig7XlNRD25QPv0kVqy3MmmH6Y"
+    "image": "/members/mem_011.jpg"
   },
   {
     "id": "mem_012",
@@ -128,7 +129,7 @@
     "batch": "2028",
     "domain": "NLP",
     "bio": "Emotion Adaptive Background Change",
-    "image": "https://drive.google.com/open?id=1ksRDLRwLVjF_OzVf6WDmnikCvKwIrqdJ"
+    "image": "/members/mem_012.jpg"
   },
   {
     "id": "mem_013",
@@ -139,7 +140,7 @@
     "batch": "2028",
     "domain": "Web Dev",
     "bio": "Nothing for now",
-    "image": "https://drive.google.com/open?id=16H3s6FxWY59v7zEhmqRdSlumUQc2vPkw"
+    "image": "/members/mem_013.jpg"
   },
   {
     "id": "mem_014",
@@ -150,7 +151,7 @@
     "batch": "2028",
     "domain": "CV",
     "bio": "None",
-    "image": "https://drive.google.com/open?id=1CkOTvJ_iFuW1nchoq6OJbMIaDfeAuNTP"
+    "image": "/members/mem_014.jpg"
   },
   {
     "id": "mem_015",
@@ -161,7 +162,7 @@
     "batch": "2028",
     "domain": "NLP",
     "bio": "Transfinnite - synthetic handwritten prescription generator, BPCL Excel analytics chatbot, Jarvis Jr",
-    "image": "https://drive.google.com/open?id=12DdKwUzGZUIFg0dmhe5R_gW0QdbEiBAL"
+    "image": "/members/mem_015.jpg"
   },
   {
     "id": "mem_016",
@@ -172,7 +173,7 @@
     "batch": "2028",
     "domain": "NLP",
     "bio": "Lingoquest",
-    "image": "https://drive.google.com/open?id=1T3MDCV5lSGOGGaBwfSqGFoyEgR8rIgTj"
+    "image": "/members/mem_016.jpg"
   },
   {
     "id": "mem_017",
@@ -183,7 +184,7 @@
     "batch": "2028",
     "domain": "NLP",
     "bio": "Active in NLP domain and CV domain. Working on project with media pipelines, predictive analysis etc.",
-    "image": "https://drive.google.com/open?id=18PT1Zk2iRZ4rXoMSvm6QXRnzB_KsVWOw"
+    "image": "/members/mem_017.jpg"
   },
   {
     "id": "mem_018",
@@ -194,7 +195,7 @@
     "batch": "2028",
     "domain": "NLP",
     "bio": "Part of LingoQuest Project",
-    "image": "https://drive.google.com/open?id=1jm3SvzKmOunOAEwJMUVFyMdnR69ZToC7"
+    "image": "/members/mem_018.jpg"
   },
   {
     "id": "mem_019",
@@ -205,7 +206,7 @@
     "batch": "2028",
     "domain": "NLP",
     "bio": "Jarvis jr and BPCL excel analytics chatbot",
-    "image": "https://drive.google.com/open?id=17p-46O4_kj7oYgZZc657jIVFugsN8E15"
+    "image": "/members/mem_019.jpg"
   },
   {
     "id": "mem_020",
@@ -216,7 +217,7 @@
     "batch": "2028",
     "domain": "Design",
     "bio": "I am in design team. So currently we are designing t-shirt for our club",
-    "image": "https://drive.google.com/open?id=1Xj7FdJlIpwkJM5U3XpbnW7ogcjPdbKF6"
+    "image": "/members/mem_020.jpg"
   },
   {
     "id": "mem_021",
@@ -227,6 +228,72 @@
     "batch": "2028",
     "domain": "NLP",
     "bio": "I am an NLP Engineer at DataByte, I have participated in SIH and Transfinite hackaton with DataByte team, Currently I am working on Emotion adaptive background generation project.",
-    "image": "https://drive.google.com/open?id=1PUk2MuC89mBGP_jp4jhS48QYC2ZOv-7t"
+    "image": "/members/mem_021.jpg"
+  },
+  {
+    "id": "mem_022",
+    "name": "Meghaj Sakthi BM",
+    "rollNo": "8825570700",
+    "linkedin": "https://www.linkedin.com/in/meghaj-sakthi-9453a0311?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    "github": "",
+    "batch": "2028",
+    "domain": "NLP",
+    "bio": "",
+    "image": "/members/mem_022.jpg"
+  },
+  {
+    "id": "mem_023",
+    "name": "Rayyan Simab",
+    "rollNo": "106123108",
+    "linkedin": "https://www.linkedin.com/in/rayyan-simab-9ba0112a9/",
+    "github": "",
+    "batch": "2027",
+    "domain": "NLP",
+    "bio": "Number Plate Recognition - Pragyan Open House 25",
+    "image": "/members/mem_023.jpg"
+  },
+  {
+    "id": "mem_024",
+    "name": "D DHANESWARAN",
+    "rollNo": "111123038",
+    "linkedin": "https://www.linkedin.com/in/d-dhaneswaran-1675942b2?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+    "github": "",
+    "batch": "2027",
+    "domain": "NLP",
+    "bio": "NITT CHATBOT",
+    "image": "/members/mem_024.jpg"
+  },
+  {
+    "id": "mem_025",
+    "name": "Sarvesh Kaijkar",
+    "rollNo": "106124048",
+    "linkedin": "https://www.linkedin.com/in/sarvesh-kaijkar-50006834b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    "github": "",
+    "batch": "2028",
+    "domain": "CV",
+    "bio": "Celebrity lookalike detection",
+    "image": "/members/mem_025.jpg"
+  },
+  {
+    "id": "mem_026",
+    "name": "Vidhan Gupta",
+    "rollNo": "112124075",
+    "linkedin": "www.linkedin.com/in/vidhanguptaofficial",
+    "github": "",
+    "batch": "2028",
+    "domain": "CV",
+    "bio": "Celeb Look-alike",
+    "image": "/members/mem_026.jpg"
+  },
+  {
+    "id": "mem_027",
+    "name": "Nisita M",
+    "rollNo": "112122041",
+    "linkedin": "https://www.linkedin.com/in/nisita-m-282404260/",
+    "github": "",
+    "batch": "2026",
+    "domain": "Web Dev, Design",
+    "bio": "Working as the head of the team. Overseeing technical projects and strategic initiatives. Conducted induction drives. Participated in hackathons, contributing to idea generation and prototype development.",
+    "image": "/members/mem_027.jpg"
   }
 ]

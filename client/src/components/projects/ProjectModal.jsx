@@ -118,28 +118,7 @@ const ProjectModal = ({ project, isOpen, onClose, membersMap }) => {
                                 </div>
 
                                 {/* Team Members */}
-                                {teamMembers.length > 0 && (
-                                    <div className="mb-8">
-                                        <h3 className="text-sm font-mono text-gray-500 mb-3 uppercase tracking-wider">Built By</h3>
-                                        <div className="flex flex-wrap gap-4">
-                                            {teamMembers.map((member) => (
-                                                <div key={member.id} className="flex items-center gap-2 group">
-                                                    <div className="w-8 h-8 rounded-full overflow-hidden border border-gray-700 group-hover:border-data-blue transition-colors">
-                                                        <img 
-                                                            src={`/images/members/${member.rollNo}.png`} 
-                                                            alt={member.name}
-                                                            className="w-full h-full object-cover"
-                                                            onError={(e) => { e.target.src = 'https://ui-avatars.com/api/?name=' + member.name + '&background=random'; }} 
-                                                        />
-                                                    </div>
-                                                    <span className="text-sm text-gray-300 group-hover:text-data-blue transition-colors">
-                                                        {member.name}
-                                                    </span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
+
 
                                 {/* Links */}
                                 <div className="mt-auto flex gap-4 pt-4 border-t border-gray-800">

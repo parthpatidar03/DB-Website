@@ -50,6 +50,7 @@ const MemberCard = ({ member }) => {
                     : `/images/members/${member.rollNo}.png`
                 }
                 loading="lazy"
+                referrerPolicy="no-referrer"
                 onError={(e) => {
                   // Fallback to a clear styling if image is missing
                   e.target.style.display = 'none';

@@ -99,7 +99,29 @@
     "techStack": ["React", "Vite", "Tailwind CSS", "Node.js", "Express"],
     "status": "in-progress",
     "image": "/images/projects/databyte-website.png",
-    "github": "https://github.com/vedx07/db",
+    "github": "https://github.com/parthpatidar03/DB-Website",
+    "demo": ""
+  },
+  {
+    "id": "proj_010",
+    "name": "CrackSentinel",
+    "description": "A smart concrete crack monitoring system that captures frames from IP cameras at fixed intervals and uses a custom YOLO deep learning model to detect and segment cracks in real time. Features a web dashboard for human verification and multi-camera management.",
+    "category": "cv",
+    "techStack": ["YOLO", "PyTorch", "OpenCV", "FastAPI"],
+    "status": "completed",
+    "image": "/images/projects/crack-sentinel.png",
+    "github": "",
+    "demo": ""
+  },
+  {
+    "id": "proj_011",
+    "name": "GestureVerse",
+    "description": "An AI-powered human-computer interaction system that replaces physical controls with intuitive hand gestures captured via a webcam. Showcases gesture-based control for gaming without keyboard or mouse.",
+    "category": "cv",
+    "techStack": ["OpenCV", "MediaPipe", "PyAutoGUI"],
+    "status": "completed",
+    "image": "/images/projects/gesture-verse.png",
+    "github": "",
     "demo": ""
   }
 ]
