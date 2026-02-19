@@ -1,24 +1,53 @@
-/**
- * Stats API Route
- * 
- * WHY THIS EXISTS:
- * Serves club statistics for the homepage. This is a tiny payload (~200 bytes)
- * that rarely changes, so it's cached aggressively (1 hour browser, 1 day CDN).
- * 
- * ENDPOINTS:
- * GET /api/stats → Returns club statistics object
- */
-
 const express = require('express');
 const router = express.Router();
-const { longCache } = require('../middleware/cache');
+const { noCache } = require('../middleware/cache');
 
-// Load stats data
-const stats = require('../data/stats.json');
+// Load data sources
+const projects = require('../data/projects.json');
+const members = require('../data/members.json');
+// We still keep stats.json for fallback/static data like events
+const staticStats = require('../data/stats.json');
 
 // GET /api/stats
-router.get('/', longCache, (req, res) => {
-    res.json(stats);
+router.get('/', noCache, (req, res) => {
+    try {
+        // 1. Calculate Project Stats
+        const projectStats = {
+            total: projects.length,
+            categories: projects.reduce((acc, curr) => {
+                const cat = curr.category || 'other';
+                acc[cat] = (acc[cat] || 0) + 1;
+                return acc;
+            }, {})
+        };
+
+        // 2. Calculate Member Stats
+        const memberStats = {
+            total: members.length,
+            batches: members.reduce((acc, curr) => {
+                const batch = curr.batch || 'unknown';
+                acc[batch] = (acc[batch] || 0) + 1;
+                return acc;
+            }, {})
+        };
+
+        // 3. Merge with static stats (events, achievements)
+        const responseData = {
+            ...staticStats,
+            projects: projectStats,
+            members: memberStats,
+            achievements: {
+                ...staticStats.achievements,
+                projects_deployed: projects.length // Sync this with actual projects
+            }
+        };
+
+        res.json(responseData);
+    } catch (error) {
+        console.error('Error generating stats:', error);
+        // Fallback to static stats if calculation fails
+        res.json(staticStats);
+    }
 });
 
 module.exports = router;

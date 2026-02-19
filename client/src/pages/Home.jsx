@@ -14,7 +14,7 @@ import { fadeInVariants, slideUpVariants, containerVariants, itemVariants } from
  * - Live stats with data gauges
  */
 const Home = () => {
-  const { data: stats } = useDataFetch('/api/stats');
+  const { data: stats } = useDataFetch('/api/stats?v=1');
 
   return (
     <div className="min-h-screen">
